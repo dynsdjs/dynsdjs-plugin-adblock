@@ -1,0 +1,30 @@
+{
+  "name": "dynsdjs-plugin-adblock",
+  "version": "0.0.1",
+  "description": "Adblock plugin for dynsdjs",
+  "author": "Julian Xhokaxhiu",
+  "license": "MIT",
+  "homepage": "https://github.com/dynsdjs/dynsdjs-plugin-adblock#readme",
+  "bugs": {
+    "url": "https://github.com/dynsdjs/dynsdjs-plugin-adblock/issues"
+  },
+  "main": "dist/DynsdAdBlock.js",
+  "scripts": {
+    "build:dev": "webpack",
+    "build:watch": "webpack --watch",
+    "prepublish": "webpack --env=prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dynsdjs/dynsdjs-plugin-adblock.git"
+  },
+  "keywords": [
+    "dynsd"
+  ],
+  "devDependencies": {
+    "babili-webpack-plugin": "^0.1.2",
+    "ip": "^1.1.5",
+    "node-fetch": "^1.7.2",
+    "webpack": "^3.3.0"
+  }
+}
