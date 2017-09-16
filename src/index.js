@@ -1,8 +1,13 @@
 import fetch from 'node-fetch'
 import ip from 'ip'
 
+const rulesUrl = 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts'
+
+// We will use this to store a reference to the dynsd chalk instance
+let chalk = null
+
 function start( resolve, reject, data ) {
-  fetch( 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' )
+  fetch( rulesUrl )
     .then( res => res.text() )
     .then( body => {
         body
@@ -22,23 +27,40 @@ function start( resolve, reject, data ) {
                   .set(
                     domain,
                     {
-                      address: ip.address( 'private', 'ipv4' ),
-                      address6: ip.address( 'private', 'ipv6' )
+                      A: {
+                        name: domain,
+                        address: ip.address( 'private', 'ipv4' ),
+                        ttl: 600
+                      },
+                      AAAA: {
+                        name: domain,
+                        address: ip.address( 'private', 'ipv6' ),
+                        ttl: 600
+                      }
                     }
                   )
               }
             }
           )
 
-        resolve()
+        data.entries
+          .keys(
+            ( err, keys ) => {
+              console.log( `[${chalk.blue('ADBLOCK')}] ${chalk.green(keys.length)} rules fetched.` )
+              resolve()
+            }
+          )
       }
     )
 }
 
 export default class {
   constructor( dns ) {
+    chalk = dns.chalk
+
     dns
       .on( 'init', ( resolve, reject, data ) => {
+        console.log( `[${chalk.blue('ADBLOCK')}] Starting to fetch rules from '${chalk.green(rulesUrl)}'...` )
         start( resolve, reject, data )
       })
   }
