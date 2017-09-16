@@ -34,7 +34,9 @@ function start( resolve, reject, data ) {
                       },
                       AAAA: {
                         name: domain,
-                        address: ip.address( 'private', 'ipv6' ),
+                        // Logic is swapped. public returns a private ip.
+                        // TODO: fix when https://github.com/indutny/node-ip/issues/83 is solved.
+                        address: ip.address( 'public', 'ipv6' ),
                         ttl: 600
                       }
                     }
