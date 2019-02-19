@@ -24,8 +24,9 @@
   "devDependencies": {
     "babili-webpack-plugin": "^0.1.2",
     "ip": "^1.1.5",
-    "node-fetch": "^1.7.2",
-    "webpack": "^3.3.0",
+    "node-fetch": "^2.3.0",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
     "webpack-source-map-support": "^2.0.1"
   }
 }
