@@ -25,8 +25,8 @@
     "babili-webpack-plugin": "^0.1.2",
     "ip": "^1.1.5",
     "node-fetch": "^2.3.0",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.3.12",
-    "webpack-source-map-support": "^2.0.1"
+    "source-map-support": "^0.5.19",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   }
 }

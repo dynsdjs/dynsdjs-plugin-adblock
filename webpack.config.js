@@ -1,8 +1,7 @@
 const path = require('path'),
       webpack = require('webpack'),
       package = require('./package.json')
-      BabiliPlugin = require('babili-webpack-plugin'),
-      WebpackSourceMapSupport = require('webpack-source-map-support')
+      BabiliPlugin = require('babili-webpack-plugin')
 
 module.exports = function( env ) {
   const filename = package.main.replace( 'dist/', '' ),
@@ -37,7 +36,11 @@ module.exports = function( env ) {
     Array.prototype.push.apply(
       config.plugins,
       [
-        new WebpackSourceMapSupport()
+        new webpack.BannerPlugin({
+          banner: 'require("source-map-support").install();',
+          raw: true,
+          entryOnly: false
+        })
       ]
     )
   } else {
