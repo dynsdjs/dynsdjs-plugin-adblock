@@ -22,11 +22,11 @@
     "dynsd"
   ],
   "devDependencies": {
-    "babili-webpack-plugin": "^0.1.2",
     "ip": "^1.1.5",
-    "node-fetch": "^2.3.0",
-    "source-map-support": "^0.5.19",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "node-fetch": "^3.0.0",
+    "source-map-loader": "^3.0.0",
+    "terser-webpack-plugin": "^5.2.4",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
   }
 }
